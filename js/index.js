@@ -6,10 +6,19 @@ let newTaskValue = document.querySelector('#exampleTextarea1');
 let assigned = document.querySelector('#assigned');
 let newTaskEmail = document.querySelector('#staticEmail');
 let newTaskDate = document.querySelector('#date');
-let getName = document.querySelector('#items');
+let getName = document.querySelector('#mobility');
+// console.log(getName.innerHTML)
 let newStatus = document.querySelector('#menu');
-console.log(getName.innerText)
+let newStatus1;
+let assignedTo;
+let categoryName = document.querySelector('#category1');
+console.log(categoryName)
 
+// console.log(getName.innerText)
+
+
+// let taskHtml = createTaskHtml('modify css', 'hghjhjhj', 'Renuka', '20/02/2021', 'started');
+// console.log(taskHtml)
 const validFormFieldInput = (data) => {
     if(newTaskNameInput.value.length < 5) {
         newTaskNameInput.classList.add('is-invalid');
@@ -34,6 +43,7 @@ const validDescription = (data) => {
         newTaskValue.classList.remove('is-invalid')
     }
     data.preventDefault();
+    assignedTo = document.querySelector("#mobility").value
 }
 assigned.addEventListener('click', validDescription); 
 
@@ -51,7 +61,10 @@ assigned.addEventListener('click', validDescription);
 // newTaskDate.addEventListener('click', validEmail); 
 
 
-
+categoryName.addEventListener('click', (event) => {
+    event.preventDefault();
+    categoryName = document.querySelector('#category1').value;
+    })
 
 
 
@@ -71,10 +84,6 @@ if (emailIsValid(newTaskEmail.value)) {
     })
 // console.log("email:  " + newTaskEmail.value)
 // console.log(emailIsValid(newTaskEmail.value))});
-
-
-
-
 
 // function myFunction() {
 //     let items = document.getElementById("items.value")
@@ -96,19 +105,18 @@ if (emailIsValid(newTaskEmail.value)) {
     //console.log(emailIsValid(newEmailInput.value))
     // console.log("date:  " + newTaskDate.value);
 
-    getName.addEventListener('click', (data) => {
-        data.preventDefault();
-        let selectedData = data;
-       for (var i = 0; i < getName.length; i++) {
-                if (getName[i].text== selectedData) {
-                    selectObj.options[i].selected = true;
-                    return getName[i].text;
-                }
-            }
-        })
-
-
-
+    // getName.addEventListener('click', (data) => {
+    //     data.preventDefault();
+    //     for ( let i = 0; i < getName.options.length; i++ ) {
+    //         if ( getName.options[i].value == data ) {
+    //             getName.options[i].selected = true;
+    //            console.log(getName.options[i]);
+    //         }
+    //     }
+        // })
+      
+       
+      
 
 
     const getDate = () => {
@@ -183,6 +191,8 @@ function gettheDate(date) {
         newTaskDate.classList.add('is-invalid');
         newTaskDate.classList.remove('is-valid');
             }
+            newStatus1 = document.querySelector('#menu').value;
+            console.log(newStatus1)
     })
 //this function is to get the date of today            
 // const getDate = () => {
@@ -231,7 +241,7 @@ const clearFormFields = () => {
     newTaskValue.value = "";
     assigned.value = "";
     newTaskEmail.value = "";
-    newStatus.value = "In Progress";
+    newStatus.value = "in progess";
     newTaskDate.value = "";
     newTaskNameInput.classList.remove("is-valid");
     newTaskValue.classList.remove("is-valid");
@@ -245,12 +255,14 @@ const clearFormFields = () => {
     taskManager.addTask(
         newTaskNameInput.value,
         newTaskValue.value,
-        assigned.value,
+        assignedTo,
         newTaskEmail.value,
         newTaskDate.value,
-        newStatus.value
+        newStatus1,
+        categoryName
       );
+      taskManager.render();
       console.log(taskManager)
       clearFormFields();
-    }
-  );
+      
+      });
