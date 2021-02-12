@@ -266,3 +266,22 @@ const clearFormFields = () => {
       clearFormFields();
       
       });
+
+      let toDoList = document.querySelector("#taskList")
+
+      toDoList.addEventListener('click', (event) => { 
+         if(event.target.classList.contains('done-button')) {
+           let parentTask = event.target.parentElement.parentElement;
+           console.log(parentTask)
+           let taskId = Number(parentTask.querySelector('.id').innerText);
+            let task = taskManager.getTaskById(taskId) 
+        //   console.log(taskId)
+             console.log(task)
+             task.task.status = "Completed"
+             console.log(task)
+             
+        }
+        taskManager.render();
+    });
+
+    // console.log(taskManager.getTaskById(0))

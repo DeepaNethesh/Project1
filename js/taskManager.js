@@ -1,4 +1,4 @@
-const createTaskHtml = (name, description, assignedTo, email, dueDate, status, category) => {
+const createTaskHtml = (id, name, description, assignedTo, email, dueDate, status, category,visibility, text) => {
   const string = `
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -7,14 +7,17 @@ const createTaskHtml = (name, description, assignedTo, email, dueDate, status, c
                     </div>
              <div class="card-body">
                 <div class="row justify-content-center">
-                    <h6 class="card-title text-uppercase category">${category}</h6>
+                    <h6 class="card-title text-uppercase id">${id}</h6>
+                </div>
+                <div class="row justify-content-center">
+                  <h6 class="card-title text-uppercase category">${category}</h6>
                 </div>
                 <div class="row">
                     <div class= "col">
                         <h3 class="card-title text-dark AssignedTo">${assignedTo}</h3>
                     </div>
                     <div class= "col">
-                        <h5 class="card-title text-muted Status">${status}</h5>
+                        <h5 class="card-title ${text} Status">${status}</h5>
                     </div>
                     <div class= "col">
                         <h5 class="card-title text-muted emailId mb-0">${email}</h5>
@@ -28,7 +31,7 @@ const createTaskHtml = (name, description, assignedTo, email, dueDate, status, c
                     <p class="card-text"><small class="text-muted">Due date: ${dueDate}</small></p>
               </div>
               <div class="card-footer">
-                <a  class="btn btn-outline-success">Mark Completed</a>
+                <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
               </div>
             </div>
             </div>
@@ -62,12 +65,37 @@ class TaskManager {
 
     this.tasks.push({ task });
   }
+  getTaskById(taskId) {
+    let foundTask;
+    this.tasks.forEach(item => {
+      let task = item;
+      // console.log(task)
+      // console.log(`id is ${task.task.id}`)
+      // console.log(task.id)
+      // console.log(task.task.id)
+      if(task.task.id === taskId) {
+        foundTask = task;
+        } 
+      });
+   
+    return foundTask;
+  }
+ 
   render () {
     let tasksHtmlList = [];
     this.tasks.forEach(task => { 
       let currentTask = task;
       console.log(currentTask)
-      let taskHtml = createTaskHtml(currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email, currentTask.task.dueDate, currentTask.task.status, currentTask.task.category)
+      let visibility;
+      let text;
+      if(currentTask.task.status === 'Completed') {
+         visibility = 'invisible'
+         text = 'text-success';
+         } else {
+         visibility = 'visible'
+         text = 'text-danger';
+      }
+      let taskHtml = createTaskHtml(currentTask.task.id, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email, currentTask.task.dueDate, currentTask.task.status, currentTask.task.category,visibility, text)
       tasksHtmlList.push(taskHtml)
       // console.log(taskHtml)
      
@@ -81,6 +109,8 @@ class TaskManager {
   }
 }
 
-const task1 = new TaskManager();
-task1.addTask('study','hghjhjhj', 'deepa', '21/02/2021', 'in-progress')
-console.log(task1)
+// const task1 = new TaskManager();
+// task1.addTask('study','hghjhjhj', 'deepa', '21/02/2021', 'in-progress')
+// console.log(task1)
+
+
