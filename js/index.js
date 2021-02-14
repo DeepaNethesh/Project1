@@ -186,6 +186,7 @@ function gettheDate(date) {
     if (Test) {
         newTaskDate.classList.add('is-valid');
         newTaskDate.classList.remove('is-invalid');
+        
     }
     else {
         newTaskDate.classList.add('is-invalid');
