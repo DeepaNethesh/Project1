@@ -20,13 +20,13 @@
         <ul class="navbar-nav mr-auto">
           
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#welcome">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">To-Do list</a>
+            <a class="nav-link" href="#taskList">To-Do list</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="#">New Task</a>
+            <a class="nav-link" href="#newTask">New Task</a>
        
     
         </ul>
@@ -37,7 +37,7 @@
         <div class="mark" style="background-image: url('https://images.unsplash.com/photo-1586282023358-13b511ccd21c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); height:400px;">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-black">
-                    <h1 class="mt-auto text-dark">Welcome to Task Management</h1>
+                    <h1 id = 'welcome' class="mt-auto text-dark">Welcome to Task Management</h1>
                     <button onclick="myFunction()">Click me</button>
                     <p id="demo"></p>           
                     <script>
@@ -217,7 +217,7 @@
         </div>
     </div>
     <div id= 'clearTask' class="form-group text-center"> 
-        <button class="btn btn-primary " name="submit" type="submit"><a class = 'text-white ' href = '#home'> Clear tasks</a></button>
+        <button class="btn btn-outline-primary " name="submit" type="submit"><a style = "text-decoration:none;" href = '#navbarSupportedContent'> Clear tasks</a></button>
     </div> 
     <br><br>
     <!-- Form -->
@@ -226,10 +226,10 @@
             <div class="row">
                 <div class=" col">
                     <form method="post">
-                        <div class="title display-4 text-center bg-light ">
+                        <div id = "newTask" class="title display-4 text-center bg-light ">
                             <h2>New Task</h2>
                         </div><br><br>
-                        <div id = "category"  class="form ">
+                        <div   class="form ">
                             <label  for="staticname" class=" col-form-label">Category</label>
                             <select id='category1' class = 'form-select' style="width: 200px" name='category1'>
                                 <option selected="">Select</option>
@@ -306,7 +306,7 @@
                             </div>
                             <br><br>
                             <div id= 'taskForm' class="form-group submit "> 
-                                <button class="btn btn-primary " name="submit" type="submit"><a class = 'text-white' href = '#home'>  Submit</a></button>
+                                <button class="btn btn-outline-primary submit" name="submit" type="submit"><a style = "text-decoration: none" href = '#taskList'>Submit</a></button>
                             </div>
                         </div>
                     </form>
@@ -324,18 +324,21 @@
      
 </body>
 <footer class="footer bg-light" >
+    <div class="mark" style="background-image: url('https://images.unsplash.com/photo-1586282023358-13b511ccd21c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); height:200px;">
+        
 
     <a href="#" class="fa fa-facebook"></a>
     <a href="#" class="fa fa-twitter"></a>
     <a href="#" class="fa fa-google"></a>
     <a href="#" class="fa fa-linkedin"></a>  
-    <h3>Contact Us</h3>
+    <h3 class = 'text-start'>Contact Us</h3>
     <h6>&copy; All rights are reserved</h6>
     <span class="Scroll to home">
         <a href="#navbar" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
             <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
           </svg></a>
       </span>
+    </div>
 
 </footer>
 

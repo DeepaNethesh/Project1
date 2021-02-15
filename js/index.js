@@ -31,8 +31,23 @@ toDoList.addEventListener('click', (event) => {
         //console.log(task)    
     }
     taskManager.render();
+    taskManager.save();
     
 });
+
+// toDoList.addEventListener('click', (event) => { 
+//     if(event.target.classList.contains('edit')) {
+//         let parentTask = event.target.parentElement.parentElement;
+//         //console.log(parentTask)
+//         let taskId = Number(parentTask.querySelector('.id').innerText);
+//         let task = taskManager.getTaskById(taskId); 
+//         task.task.status = "Completed";
+//         //console.log(task)    
+//     }
+//     taskManager.render();
+//     taskManager.save();
+    
+// });
 
 //validates the Category
 const validCategory = (data) => {
@@ -198,6 +213,7 @@ form.addEventListener('click', (event) => {
         taskManager.render();
         clearFormFields();  
         taskManager.save();
+        document.querySelector(".submit").href = "#welcome";
     } 
     else {
         validationFail = 0;

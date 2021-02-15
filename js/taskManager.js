@@ -32,6 +32,8 @@ class TaskManager {
     });
     return foundTask;
   }
+
+
   //for each of the tasks of the task manager, the function creates an html code (by calling another function) and save the html code of all the tasks. Finally the html code snippet is passed to the index.html
   render () {
     let tasksHtmlList = [];
@@ -49,8 +51,18 @@ class TaskManager {
         visibility = 'visible'
         text = 'text-danger';
       }
-      
-      let taskHtml = createTaskHtml(currentTask.task.id, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email, currentTask.task.dueDate, currentTask.task.status, currentTask.task.category,visibility, text)
+
+      let image;
+
+      if(currentTask.task.assignedTo === 'Deepa') {
+        image = 'https://ui-avatars.com/api/?name=D+M'
+      } else if (currentTask.task.assignedTo === 'Laura') {
+        image = 'https://ui-avatars.com/api/?name=L+V'
+      } else {
+        image = 'https://ui-avatars.com/api/?name=R+M'
+      }  
+
+      let taskHtml = createTaskHtml(currentTask.task.id, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email, currentTask.task.dueDate, currentTask.task.status, currentTask.task.category,visibility, text, image)
       tasksHtmlList.push(taskHtml)
     });
     
@@ -76,6 +88,7 @@ class TaskManager {
     }
   }
 
+
   clear() {
     this.tasks =[];
     this.currentId = 0;
@@ -83,12 +96,12 @@ class TaskManager {
 }
 
 //the function apply the html code to each task acording to the inputs from the user.
-const createTaskHtml = (id, name, description, assignedTo, email, dueDate, status, category, visibility, text) => {
+const createTaskHtml = (id, name, description, assignedTo, email, dueDate, status, category, visibility, text, image) => {
   const string = `
     <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
         <div class="text-center">  
-            <img class="card-img-top rounded-circle img-fluid" src="https://st.depositphotos.com/1734074/3427/v/950/depositphotos_34271411-stock-illustration-vector-profile-icon.jpg" alt="Avatar" style="width:20%">
+            <img class="card-img-top rounded-circle img-fluid" src=${image} alt="Avatar" style="width:20%">
             </div>
     <div class="card-body">
       <div class="row justify-content-center">
@@ -117,8 +130,9 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
     </div>
       <div class="card-footer">
         <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
+      
       </div>
-    </div>
+      </div>
     </div>
     `
     return string;         
