@@ -10,8 +10,7 @@ let newStatus1;
 let assignedTo;
 let categoryName = document.querySelector('#category1');
 let clearTask = document.querySelector('#clearTask')
-let validationFail = 0;
-console.log(categoryName.value)
+let validationFail = 0; // variable to validate input fields
 let newCategory;
 
 //creates the Task manager instance from the class
@@ -20,40 +19,8 @@ taskManager.load();
 taskManager.render();
 
 
-// //add tasks when the user clics submit
-// form.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     if(validationFail === 0) {
-//         taskManager.addTask(
-//             newTaskNameInput.value,
-//             newTaskValue.value,
-//             assignedTo,
-//             newTaskEmail.value,
-//             newTaskDate.value,
-//             newStatus1,
-//             newCategory
-//         );
-//         console.log(newTaskNameInput.value)
-//         console.log(newTaskValue.value)
-//         console.log(assignedTo)
-//         console.log(newTaskEmail.value)
-//         console.log(newTaskDate.value)
-//         console.log(newStatus1)
-//         console.log(newCategory)
-//         //display list of tasks  
-//         taskManager.render();
-//         clearFormFields();  
-//         taskManager.save();
-//     } else {
-//         validationFail = 0;
-//         return;
-//     }
-// });
-
-
 //modifies the card and task when the user clicks the 'mark completed' button
 let toDoList = document.querySelector("#taskList")
-
 toDoList.addEventListener('click', (event) => { 
     if(event.target.classList.contains('done-button')) {
         let parentTask = event.target.parentElement.parentElement;
@@ -68,61 +35,53 @@ toDoList.addEventListener('click', (event) => {
 });
 
 //validates the Category
-
 const validCategory = (data) => {
-    //  newCategory = document.querySelector('#category1').value;
     if(categoryName.value === 'Select') {
         categoryName.classList.add('is-invalid');
         categoryName.classList.remove('is-valid')
-        validationFail++;
-        
-    } else {
+        validationFail++;   
+    } 
+    else {
         categoryName.classList.add('is-valid');
         categoryName.classList.remove('is-invalid')
-        newCategory = document.querySelector('#category1').value;
-        
+        newCategory = document.querySelector('#category1').value;   
     }
- 
     data.preventDefault();
 }
 form.addEventListener('click', validCategory); 
 
 //validates the Assigned to
 
-const validAssignedTo = (data) => {
-    
+const validAssignedTo = (data) => { 
     if(getName.value === 'Select') {
         getName.classList.add('is-invalid');
        getName.classList.remove('is-valid')
         validationFail++;
-      
-    } else {
+    } 
+    else {
         getName.classList.add('is-valid');
         getName.classList.remove('is-invalid')
-        assignedTo = document.querySelector('#mobility').value;
-        
+        assignedTo = document.querySelector('#mobility').value;  
     }
- 
     data.preventDefault();
 }
+
 form.addEventListener('click', validAssignedTo); 
 
 //validates the status
 
 const validStatus = (data) => {
-    
     if(newStatus.value === 'Select') {
         newStatus.classList.add('is-invalid');
         newStatus.classList.remove('is-valid')
         validationFail++;
-      
-    } else {
+    } 
+    else {
         newStatus.classList.add('is-valid');
         newStatus.classList.remove('is-invalid')
         newStatus1 = document.querySelector('#status').value;
         
     }
- 
     data.preventDefault();
 }
 form.addEventListener('click', validStatus); 
@@ -148,12 +107,13 @@ const validDescription = (data) => {
         newTaskValue.classList.add('is-invalid');
         newTaskValue.classList.remove('is-valid')
         validationFail++;
-    } else {
+    } 
+    else {
         newTaskValue.classList.add('is-valid');
         newTaskValue.classList.remove('is-invalid')
     }
     data.preventDefault();
-    assignedTo = document.querySelector("#mobility").value
+    //assignedTo = document.querySelector("#mobility").value
 }
 form.addEventListener('click', validDescription); 
 
@@ -198,9 +158,8 @@ form.addEventListener('click', (event) => {
         newTaskDate.classList.remove('is-valid');
         validationFail++;
     }
-    // newStatus1 = document.querySelector('#menu').value;
-    //console.log(newStatus1)
 });
+
 //get the date of today and format it in yyyy-mm-dd
 const getDate = () => {
     let today = new Date();
@@ -209,8 +168,7 @@ const getDate = () => {
     let yyyy = today.getFullYear();
     today = yyyy + '-' + mm + '-' + dd;
     return today;
-    }
-// console.log(getDate())
+}
 //compare the date of today with the input date in the format yyyy-mm-dd
 const comparison = (today, newTaskDate) => {
     if(newTaskDate >= today) {
@@ -221,16 +179,12 @@ const comparison = (today, newTaskDate) => {
     }        
 }
 
-// function gettheDate(date) {
-//     if (date.select) {
-//       $('#date').pickadate().pickadate('picker').close();
-//     }
-//   }
+
 
 //add tasks when the user clics submit
 form.addEventListener('click', (event) => {
     event.preventDefault();
-    if(validationFail === 0) {
+    if(validationFail === 0) {//if the validation is ok add the task
         taskManager.addTask(
             newTaskNameInput.value,
             newTaskValue.value,
@@ -240,18 +194,12 @@ form.addEventListener('click', (event) => {
             newStatus1,
             newCategory
         );
-        console.log(newTaskNameInput.value)
-        console.log(newTaskValue.value)
-        console.log(assignedTo)
-        console.log(newTaskEmail.value)
-        console.log(newTaskDate.value)
-        console.log(newStatus1)
-        console.log(newCategory)
         //display list of tasks  
         taskManager.render();
         clearFormFields();  
         taskManager.save();
-    } else {
+    } 
+    else {
         validationFail = 0;
         return;
     }
@@ -273,11 +221,11 @@ const clearFormFields = () => {
     newStatus.classList.remove("is-valid");
     newTaskDate.classList.remove("is-valid");
     categoryName.classList.remove("is-valid")
-  };
+};
   
-
-  clearTask.addEventListener('click', () => {
+//calling the method to clear the task list
+clearTask.addEventListener('click', () => {
       localStorage.clear();
       taskManager.clear();
       taskManager.render();
-  })
+});
