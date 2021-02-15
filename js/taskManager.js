@@ -58,6 +58,31 @@ class TaskManager {
     let toDoList = document.querySelector("#taskList");
     toDoList.innerHTML = tasksHtml1;
   }
+  save() {
+    let tasksJson = JSON.stringify(this.tasks);
+    // console.log(tasksJson)
+    localStorage.setItem('tasks',tasksJson)
+    let currentId = JSON.stringify(this.currentId)
+    localStorage.setItem('currentId',currentId)
+    console.log(currentId)
+  }
+
+  load() {
+    // localStorage.getItem('tasks')
+    if(localStorage.getItem('tasks')) {
+      let tasksJson = localStorage.getItem('tasks')
+      this.tasks = JSON.parse(tasksJson)
+    }
+    if(localStorage.getItem('currentId')) {
+      let currentId = localStorage.getItem('currentId')
+      this.currentId= Number(JSON.parse(currentId))
+    }
+  }
+
+  clear() {
+    this.tasks =[];
+    this.currentId = 0;
+  }
 }
 
 //the function apply the html code to each task acording to the inputs from the user.

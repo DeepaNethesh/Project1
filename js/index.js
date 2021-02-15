@@ -9,9 +9,13 @@ let newStatus = document.querySelector('#menu');
 let newStatus1;
 let assignedTo;
 let categoryName = document.querySelector('#category1');
+let clearTask = document.querySelector('#clearTask')
 
 //creates the Task manager instance from the class
 const taskManager = new TaskManager(0);
+taskManager.load();
+taskManager.render();
+// localStorage.clear();
 
 //add tasks when the user clics submit
 form.addEventListener('click', (event) => {
@@ -28,7 +32,9 @@ form.addEventListener('click', (event) => {
     //display list of tasks  
     taskManager.render();
     clearFormFields();  
+    taskManager.save();
 });
+
 
 //modifies the card and task when the user clicks the 'mark completed' button
 let toDoList = document.querySelector("#taskList")
@@ -43,6 +49,7 @@ toDoList.addEventListener('click', (event) => {
         //console.log(task)    
     }
     taskManager.render();
+    
 });
 
 //validates the input task name
@@ -156,3 +163,9 @@ const clearFormFields = () => {
     newTaskDate.classList.remove("is-valid");
   };
   
+
+  clearTask.addEventListener('click', () => {
+      localStorage.clear();
+      taskManager.clear();
+      taskManager.render();
+  })
