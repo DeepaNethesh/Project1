@@ -24,6 +24,10 @@ class TaskManager {
 
   //funtion that identifies the task selected by the user
   getTaskById(taskId) {
+    if(taskId >= this.currentId) {
+      throw new Error('This is wrong!')
+    
+    }
     let foundTask;
     this.tasks.forEach(item => {
       let task = item;
@@ -35,6 +39,10 @@ class TaskManager {
   }
 
   deleteTask(taskId) {
+    if(taskId >= this.currentId) {
+      throw new Error('This is wrong!')
+    
+    }
     let newTasks = [];
     this.tasks.forEach(item => {
       let task = item;
