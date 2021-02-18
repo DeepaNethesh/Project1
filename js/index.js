@@ -34,6 +34,19 @@ toDoList.addEventListener('click', (event) => {
     taskManager.save();
     
 });
+toDoList.addEventListener('click', (event) => { 
+    if(event.target.classList.contains('delete')) {
+        let parentTask = event.target.parentElement.parentElement;
+        //console.log(parentTask)
+        let taskId = Number(parentTask.querySelector('.id').innerText);
+        taskManager.deleteTask(taskId); 
+        
+        //console.log(task)    
+    }
+    taskManager.render();
+    taskManager.save();
+    
+});
 
 // toDoList.addEventListener('click', (event) => { 
 //     if(event.target.classList.contains('edit')) {

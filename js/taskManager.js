@@ -1,4 +1,5 @@
 //Create the class Task Manager, that will contain all the tasks submitted by the user.
+
 class TaskManager {
   constructor(currentId = 0) {
       this.tasks =[];
@@ -33,6 +34,19 @@ class TaskManager {
     return foundTask;
   }
 
+  deleteTask(taskId) {
+    let newTasks = [];
+    this.tasks.forEach(item => {
+      let task = item;
+      if(task.task.id !== taskId) {
+        newTasks.push(task);
+        
+      } 
+    });
+    this.tasks = newTasks;
+    // console.log(this.tasks)
+  }
+   
 
   //for each of the tasks of the task manager, the function creates an html code (by calling another function) and save the html code of all the tasks. Finally the html code snippet is passed to the index.html
   render () {
@@ -68,6 +82,8 @@ class TaskManager {
     
     let tasksHtml1 = tasksHtmlList.join('\n')
     let toDoList = document.querySelector("#taskList");
+    // console.log(toDoList) 
+    // console.log(tasksHtml1)
     toDoList.innerHTML = tasksHtml1;
   }
   save() {
@@ -96,6 +112,7 @@ class TaskManager {
 }
 
 //the function apply the html code to each task acording to the inputs from the user.
+
 const createTaskHtml = (id, name, description, assignedTo, email, dueDate, status, category, visibility, text, image) => {
   const string = `
     <div class="col-lg-4 col-md-6 mb-4">
@@ -129,13 +146,13 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
           <p class="card-text"><small class="text-muted">Due date: ${dueDate}</small></p>
     </div>
       <div class="card-footer">
+        <a  class="btn btn-outline-success delete">Delete</a>
         <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
-      
+        
       </div>
       </div>
     </div>
     `
     return string;         
 }
-
 
