@@ -10,3 +10,7 @@ Team Project
 
 This is the link to the page : https://deepanethesh.github.io/project1/
 
+Steps:
+
+1. Clone the repository
+2. `npm install package.json`
