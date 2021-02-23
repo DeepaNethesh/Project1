@@ -209,7 +209,7 @@ const comparison = (today, newTaskDate) => {
 
 
 
-//add tasks when the user clics submit
+//add tasks when the user clicks submit
 form.addEventListener('click', (event) => {
     event.preventDefault();
     if(validationFail === 0) {//if the validation is ok add the task

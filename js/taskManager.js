@@ -77,11 +77,11 @@ class TaskManager {
       let image;
 
       if(currentTask.task.assignedTo === 'Deepa') {
-        image = 'https://ui-avatars.com/api/?name=D+M'
+        image = 'https://ui-avatars.com/api/?name=D+M&background=638BFF&color=fff'
       } else if (currentTask.task.assignedTo === 'Laura') {
-        image = 'https://ui-avatars.com/api/?name=L+V'
+        image = 'https://ui-avatars.com/api/?name=L+V&background=638BFF&color=fff'
       } else {
-        image = 'https://ui-avatars.com/api/?name=R+M'
+        image = 'https://ui-avatars.com/api/?name=R+M&background=638BFF&color=fff'
       }  
 
       let taskHtml = createTaskHtml(currentTask.task.id, currentTask.task.name, currentTask.task.description, currentTask.task.assignedTo, currentTask.task.email, currentTask.task.dueDate, currentTask.task.status, currentTask.task.category,visibility, text, image)
@@ -126,7 +126,7 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
     <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
         <div class="text-center">  
-            <img class="card-img-top rounded-circle img-fluid" src=${image} alt="Avatar" style="width:20%">
+            <img class="card-img-top pt-2 rounded-circle img-fluid" src=${image} alt="Avatar" style="width:20%">
             </div>
     <div class="card-body">
       <div class="row justify-content-center">
@@ -154,7 +154,7 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
           <p class="card-text"><small class="text-muted">Due date: ${dueDate}</small></p>
     </div>
       <div class="card-footer">
-        <a  class="btn btn-outline-success delete">Delete</a>
+        <a  class="btn btn-outline-danger  delete">Delete</a>
         <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
         
       </div>
