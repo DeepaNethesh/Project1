@@ -1,4 +1,4 @@
-Final project
+Team Project
 
 Create a task planner web application. 
 
