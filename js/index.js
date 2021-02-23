@@ -167,7 +167,7 @@ form.addEventListener('click', (event) => {
     }
 });
 
-// compares the email input format and returns true/false
+// (Regular expression)compares the email input format and returns true/false
 function emailIsValid (email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 };
