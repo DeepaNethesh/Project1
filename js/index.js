@@ -12,6 +12,10 @@ let categoryName = document.querySelector('#category1');
 let clearTask = document.querySelector('#clearTask')
 let validationFail = 0; // variable to validate input fields
 let newCategory;
+let statusEdit = document.querySelector('#statusEdit')
+let assignedEdit = document.querySelector('#mobilityEdit')
+let dateEdit = document.querySelector('#dateEdit')
+let descriptionEdit = document.querySelector('#exampleTextarea1Edit')
 
 //creates the Task manager instance from the class
 const taskManager = new TaskManager(0);
@@ -46,16 +50,20 @@ toDoList.addEventListener('click', (event) => {
         console.log(task)
         saveButton.addEventListener('click',(event) => {
             event.preventDefault();
-            let status = document.querySelector('#statusEdit').value;
-            let assigned = document.querySelector('#mobilityEdit').value;
-            let date = document.querySelector('#dateEdit').value;
-            let description = document.querySelector('#exampleTextarea1Edit').value
-            console.log(status)
-            task.task.status = status;
-            task.task.description = description;
-            task.task.dueDate = date;
-            task.task.assignedTo = assigned;
-            console.log(task.task.status)
+          
+            if(assignedEdit.value !== 'Select') {
+                task.task.assignedTo = assignedEdit.value;
+            }
+            if(statusEdit.value !== 'Select') {
+                task.task.status = statusEdit.value;
+            }
+            if(descriptionEdit.value !== '') {
+            task.task.description = descriptionEdit.value;
+            }
+            if(dateEdit.value !== '') {
+            task.task.dueDate = dateEdit.value;
+            }
+            
             taskManager.render();
             taskManager.save();
         })
@@ -66,7 +74,7 @@ toDoList.addEventListener('click', (event) => {
     }
     // taskManager.render();
     // taskManager.save();
-    
+    clearEditFields();
 });
 toDoList.addEventListener('click', (event) => { 
     if(event.target.classList.contains('delete')) {
@@ -292,3 +300,13 @@ clearTask.addEventListener('click', () => {
       taskManager.clear();
       taskManager.render();
 });
+
+
+const clearEditFields = () => {
+    assignedEdit.value = "Select";
+    descriptionEdit.value = "";
+    dateEdit.value = "";
+    statusEdit.value = "Select";
+    
+};
+  
