@@ -54,6 +54,23 @@ class TaskManager {
     this.tasks = newTasks;
     // console.log(this.tasks)
   }
+  // EditTask(taskId) {
+  //   if(taskId >= this.currentId) {
+  //     throw new Error('This is wrong!')
+    
+  //   }
+  //   let newTasks = [];
+  //   this.tasks.forEach(item => {
+  //     let task = item;
+  //     if(task.task.id !== taskId) {
+  //       newTasks.push(task);
+  //     }  else {
+
+  //     }
+  //   });
+  //   this.tasks = newTasks;
+  //   // console.log(this.tasks)
+  // }
    
 
   //for each of the tasks of the task manager, the function creates an html code (by calling another function) and save the html code of all the tasks. Finally the html code snippet is passed to the index.html
@@ -167,6 +184,7 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
     </div>
       <div class="card-footer">
         <a  class="btn btn-outline-danger  delete">Delete</a>
+        <button type="button" class="btn btn-outline-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</button>
         <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
         
       </div>

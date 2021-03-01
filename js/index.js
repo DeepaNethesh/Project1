@@ -34,6 +34,40 @@ toDoList.addEventListener('click', (event) => {
     taskManager.save();
     
 });
+let saveButton = document.querySelector('#save')
+toDoList.addEventListener('click', (event) => { 
+    event.preventDefault();
+    console.log('test')
+    if(event.target.classList.contains('edit')) {
+        let parentTask = event.target.parentElement.parentElement;
+        console.log(parentTask)
+        let taskId = Number(parentTask.querySelector('.id').innerText);
+        let task = taskManager.getTaskById(taskId); 
+        console.log(task)
+        saveButton.addEventListener('click',(event) => {
+            event.preventDefault();
+            let status = document.querySelector('#statusEdit').value;
+            let assigned = document.querySelector('#mobilityEdit').value;
+            let date = document.querySelector('#dateEdit').value;
+            let description = document.querySelector('#exampleTextarea1Edit').value
+            console.log(status)
+            task.task.status = status;
+            task.task.description = description;
+            task.task.dueDate = date;
+            task.task.assignedTo = assigned;
+            console.log(task.task.status)
+            taskManager.render();
+            taskManager.save();
+        })
+        //task.task.status = document.querySelector('#statusEdit').innerText;
+        // console.log(document.querySelector('#statusEdit').value)
+        // console.log(task.task.status)
+        //console.log(task)    
+    }
+    // taskManager.render();
+    // taskManager.save();
+    
+});
 toDoList.addEventListener('click', (event) => { 
     if(event.target.classList.contains('delete')) {
         let parentTask = event.target.parentElement.parentElement;
