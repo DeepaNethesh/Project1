@@ -59,6 +59,16 @@ class TaskManager {
   //for each of the tasks of the task manager, the function creates an html code (by calling another function) and save the html code of all the tasks. Finally the html code snippet is passed to the index.html
   render () {
     let tasksHtmlList = [];
+    // console.log(this.tasks)
+    if(this.tasks.length === 0) {
+      console.log(this.tasks)
+      const message = document.querySelector('#message');
+      message.classList.add('visible')
+      message.classList.remove('invisible')
+    } else {
+      message.classList.add('invisible')
+      message.classList.remove('visible')
+    }
     this.tasks.forEach(task => { 
       let currentTask = task;
       //console.log(currentTask)
@@ -94,6 +104,7 @@ class TaskManager {
     // console.log(tasksHtml1)
     toDoList.innerHTML = tasksHtml1;
   }
+  
   save() {
     let tasksJson = JSON.stringify(this.tasks);
     localStorage.setItem('tasks',tasksJson)
@@ -118,6 +129,7 @@ class TaskManager {
     this.currentId = 0;
   }
 }
+
 
 //the function apply the html code to each task acording to the inputs from the user.
 
