@@ -10,7 +10,7 @@ Team Project
           <li>Task list can be deleted</li></ul>
 
 <h4>Highlights:</hr>
-     <ul><li>Programming languages: HTML, CSS & Javascripts <img src='task-app.JPG' height='500' /></li><br>
+     <ul><li>Programming languages: HTML, CSS & Javascripts <img src='./Images/JS_html-css-icon-png.png' height='500' /></li><br>
       <li>Bootstrap</li><br>
       <li>Responsive Design</li><br>
       <li>DOM Manipulation</li><br>
@@ -28,5 +28,5 @@ Steps:
 
 
 
-![Taskmanager](https://user-images.githubusercontent.com/75956735/109601683-6b80f100-7b73-11eb-87ef-ae209c9f7ad1.PNG)
+<img src='./Images/Taskmanager.PNG' height='500' />
 
