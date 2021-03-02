@@ -37,7 +37,7 @@ class TaskManager {
     });
     return foundTask;
   }
-
+ //function to delete the task
   deleteTask(taskId) {
     if(taskId >= this.currentId) {
       throw new Error('This is wrong!')
@@ -52,16 +52,13 @@ class TaskManager {
       } 
     });
     this.tasks = newTasks;
-    // console.log(this.tasks)
+  
   }
-   
 
   //for each of the tasks of the task manager, the function creates an html code (by calling another function) and save the html code of all the tasks. Finally the html code snippet is passed to the index.html
   render () {
     let tasksHtmlList = [];
-    // console.log(this.tasks)
     if(this.tasks.length === 0) {
-      console.log(this.tasks)
       const message = document.querySelector('#message');
       message.classList.add('visible')
       message.classList.remove('invisible')
@@ -71,7 +68,6 @@ class TaskManager {
     }
     this.tasks.forEach(task => { 
       let currentTask = task;
-      //console.log(currentTask)
       let visibility;
       let text;
       //the following if/else evaluates the status selected for the task and applies style and makes the button visible or not
@@ -100,11 +96,9 @@ class TaskManager {
     
     let tasksHtml1 = tasksHtmlList.join('\n')
     let toDoList = document.querySelector("#taskList");
-    // console.log(toDoList) 
-    // console.log(tasksHtml1)
     toDoList.innerHTML = tasksHtml1;
   }
-  
+  //function to save and load the task list in the local storage.
   save() {
     let tasksJson = JSON.stringify(this.tasks);
     localStorage.setItem('tasks',tasksJson)
@@ -123,7 +117,7 @@ class TaskManager {
     }
   }
 
-
+//function to clear all the tasks from the todolist and the local storage
   clear() {
     this.tasks =[];
     this.currentId = 0;
@@ -167,6 +161,7 @@ const createTaskHtml = (id, name, description, assignedTo, email, dueDate, statu
     </div>
       <div class="card-footer">
         <a  class="btn btn-outline-danger  delete">Delete</a>
+        <button type="button" class="btn btn-outline-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</button>
         <a  class="btn btn-outline-success ${visibility} done-button">Mark Completed</a>
         
       </div>

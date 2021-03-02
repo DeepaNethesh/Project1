@@ -315,14 +315,99 @@
             </div>
         </div>
     </div> 
+    
+      
+    
  <!-- </div>  -->
               
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
    
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>       
+   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>        -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
      <!-- <script src="/test/test.js"></script> -->
+     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> -->
+     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Edit task</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+             <form>
+               <div class="mb-3">
+                 <label for="recipient-name" class="col-form-label">Recipient:</label>
+                 <input type="text" class="form-control" id="recipient-name">
+               </div>
+               <div class="mb-3">
+                 <label for="message-text" class="col-form-label">Message:</label>
+                 <textarea class="form-control" id="message-text"></textarea>
+               </div>
+             </form>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary">Send message</button>
+           </div>
+         </div>
+       </div>
+     </div> -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Edit task">Edit task</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label for="exampleTextarea1" class=" col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea  id="exampleTextarea1Edit" class="form-control" style="width:400px;" rows="3"></textarea>
+                        </div>
+                    <label for="assignedname" class="control-label ">Assigned to</label>
+                    <div id = 'assignedEdit' class="col-sm-10">
+                        <div class="dropdown ">
+                            <select id='mobilityEdit' class = 'form-select' style="width: 200px"  name='mobility'>
+                                <option selected="">Select</option> 
+                                <option>Deepa</option>
+                                <option>Laura</option>
+                                <option>Renuka</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label for="staticEmail" class=" col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="staticEmailEdit" class="form-control" style="width:400px;"  placeholder="email@example.com">
+                        
+                    </div>
+                    <label class="control-label" for="date">Due Date</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" style="width:200px;" id="dateEdit" name="date" placeholder="MM/DD/YYY" type="date"/>
+                        
+                    </div>
+                    <label for="status" class=" col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <div class="dropdown ">
+                            <select id='statusEdit' class = 'form-select' style="width: 200px"  name='menu'>
+                                <option selected="">Select</option>  
+                                <option>Completed</option>
+                                <option>Assigned</option>
+                                <option>On Hold</option>
+                                <option>In progress</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id ='save' type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 <footer class=" container footer " >
     <div class="mark" style="background-image: url('Images/undraw_contact_us_15o2.png'); height:200px;">
