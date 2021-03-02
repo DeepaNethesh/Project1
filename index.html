@@ -361,11 +361,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
-                <label for="exampleTextarea1" class=" col-form-label">Description</label>
-                    <div class="col-sm-10">
-                        <textarea  id="exampleTextarea1Edit" class="form-control" style="width:400px;" rows="3"></textarea>
-                    </div>
+                <form>
+                    <label for="exampleTextarea1" class=" col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea  id="exampleTextarea1Edit" class="form-control" style="width:400px;" rows="3"></textarea>
+                        </div>
                     <label for="assignedname" class="control-label ">Assigned to</label>
                     <div id = 'assignedEdit' class="col-sm-10">
                         <div class="dropdown ">
@@ -377,12 +377,17 @@
                             </select>
                         </div>
                     </div>
-                <label class="control-label" for="date">Due Date</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" style="width:200px;" id="dateEdit" name="date" placeholder="MM/DD/YYY" type="date"/>
-                                    
-                                </div>
-                <label for="status" class=" col-form-label">Status</label>
+                    <label for="staticEmail" class=" col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="staticEmailEdit" class="form-control" style="width:400px;"  placeholder="email@example.com">
+                        
+                    </div>
+                    <label class="control-label" for="date">Due Date</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" style="width:200px;" id="dateEdit" name="date" placeholder="MM/DD/YYY" type="date"/>
+                        
+                    </div>
+                    <label for="status" class=" col-form-label">Status</label>
                     <div class="col-sm-10">
                         <div class="dropdown ">
                             <select id='statusEdit' class = 'form-select' style="width: 200px"  name='menu'>
@@ -394,7 +399,7 @@
                             </select>
                         </div>
                     </div>
-              </form>
+                </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

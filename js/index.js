@@ -16,7 +16,7 @@ let statusEdit = document.querySelector('#statusEdit')
 let assignedEdit = document.querySelector('#mobilityEdit')
 let dateEdit = document.querySelector('#dateEdit')
 let descriptionEdit = document.querySelector('#exampleTextarea1Edit')
-
+let emailEdit = document.querySelector('#staticEmailEdit')
 //creates the Task manager instance from the class
 const taskManager = new TaskManager(0);
 taskManager.load();
@@ -38,16 +38,21 @@ toDoList.addEventListener('click', (event) => {
     taskManager.save();
     
 });
+
+//modifies the card and task when the user clicks the 'Edit' button
+
 let saveButton = document.querySelector('#save')
 toDoList.addEventListener('click', (event) => { 
     event.preventDefault();
-    console.log('test')
     if(event.target.classList.contains('edit')) {
         let parentTask = event.target.parentElement.parentElement;
-        console.log(parentTask)
         let taskId = Number(parentTask.querySelector('.id').innerText);
         let task = taskManager.getTaskById(taskId); 
-        console.log(task)
+        descriptionEdit.value =task.task.description;
+        statusEdit.value =  task.task.status ;
+        assignedEdit.value = task.task.assignedTo;
+        dateEdit.value =  task.task.dueDate;
+        emailEdit.value = task.task.email;
         saveButton.addEventListener('click',(event) => {
             event.preventDefault();
           
@@ -63,46 +68,30 @@ toDoList.addEventListener('click', (event) => {
             if(dateEdit.value !== '') {
             task.task.dueDate = dateEdit.value;
             }
+            if(emailEdit.value !== '') {
+                task.task.email = emailEdit.value;
+            }
             
             taskManager.render();
             taskManager.save();
         })
-        //task.task.status = document.querySelector('#statusEdit').innerText;
-        // console.log(document.querySelector('#statusEdit').value)
-        // console.log(task.task.status)
-        //console.log(task)    
+        
     }
-    // taskManager.render();
-    // taskManager.save();
-    clearEditFields();
+   
 });
+
+//delete the task by clicking in the 'delete' button in the card
 toDoList.addEventListener('click', (event) => { 
     if(event.target.classList.contains('delete')) {
         let parentTask = event.target.parentElement.parentElement;
-        //console.log(parentTask)
         let taskId = Number(parentTask.querySelector('.id').innerText);
-        taskManager.deleteTask(taskId); 
-        
-        //console.log(task)    
+        taskManager.deleteTask(taskId);   
     }
     taskManager.render();
     taskManager.save();
     
 });
 
-// toDoList.addEventListener('click', (event) => { 
-//     if(event.target.classList.contains('edit')) {
-//         let parentTask = event.target.parentElement.parentElement;
-//         //console.log(parentTask)
-//         let taskId = Number(parentTask.querySelector('.id').innerText);
-//         let task = taskManager.getTaskById(taskId); 
-//         task.task.status = "Completed";
-//         //console.log(task)    
-//     }
-//     taskManager.render();
-//     taskManager.save();
-    
-// });
 
 //validates the Category
 const validCategory = (data) => {
@@ -186,13 +175,6 @@ const validDescription = (data) => {
     //assignedTo = document.querySelector("#mobility").value
 }
 form.addEventListener('click', validDescription); 
-
-
-
-// form.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     categoryName = document.querySelector('#category1').value;
-//     })
 
 //validates the email format
 
@@ -302,11 +284,4 @@ clearTask.addEventListener('click', () => {
 });
 
 
-const clearEditFields = () => {
-    assignedEdit.value = "Select";
-    descriptionEdit.value = "";
-    dateEdit.value = "";
-    statusEdit.value = "Select";
-    
-};
-  
+
