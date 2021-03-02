@@ -10,7 +10,7 @@ Team Project
           <li>Task list can be deleted</li></ul>
 
 <h4>Highlights:</hr>
-     <ul><li>Programming languages: HTML, CSS & Javascripts <img src='./Images/JS_html-css-icon-png.png' height='500' /></li><br>
+     <ul><li>Programming languages: HTML, CSS & Javascripts <img src='./Images/JS_html-css-icon-png.png' height='25' /></li><br>
       <li>Bootstrap</li><br>
       <li>Responsive Design</li><br>
       <li>DOM Manipulation</li><br>
