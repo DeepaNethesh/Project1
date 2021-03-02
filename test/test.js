@@ -21,9 +21,9 @@ describe('TaskManager', () => {
             
         })
     })
-})
 
-describe('TaskManager', () => {
+
+
     describe('.addTask',() => {
         describe('adding new task', () => {
             it('should add the new task to the tasks array', () => {
